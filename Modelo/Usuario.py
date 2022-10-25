@@ -29,11 +29,7 @@ class Usuario():
 
     def guardarUsuario(usuario):
         try:
-            connection = mysql.connector.connect(host='localhost',
-                                                database='turnow',
-                                                user='root',
-                                                password='')
-
+            conectar()
             mySql_insert_query = "INSERT INTO Usuarios (IdUsuario, Apellido, Nombre, Email, Telefono, IdCliente, IdEmprendedor) VALUES (0, " + usuario.Apellido + ", " + usuario.Nombre + ", " + usuario.Email + ", " + usuario.Telefono + ", 0, 0)"
 
             cursor = connection.cursor()
@@ -49,3 +45,28 @@ class Usuario():
             if connection.is_connected():
                 connection.close()
                 print("Conexion cerrada")
+
+    def obtenerUsuarioPorId(Id):
+        try:
+            conectar()
+            mySql_query = "select * from productos where idUsuario =" + id
+            cursor = connection.cursor()
+            cursor.execute(mySql_query)       
+            rows=cursor.fetchall()
+            for row in rows:
+                print(row)     
+            cursor.close()
+
+        except mysql.connector.Error as error:
+            print("Error al obtener usuario {}".format(error))
+
+        finally:
+            if connection.is_connected():
+                connection.close()
+                print("Conexion cerrada")
+
+    def conectar():
+        connection = mysql.connector.connect(host='localhost',
+                                            database='Turnow',
+                                            user='root',
+                                            password='')
