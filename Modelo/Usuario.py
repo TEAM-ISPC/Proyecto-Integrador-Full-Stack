@@ -68,7 +68,7 @@ class Usuario():
     def borrarUsuarioPorId(id):
         try:
             conectar()
-            mySql = " DELETE FROM productos  WHERE Id =" + id
+            mySql = " DELETE FROM Usuarios  WHERE Id =" + id
             cursor = connection.cursor()
             cursor.execute(mySql)
             connection.commit()
@@ -76,6 +76,24 @@ class Usuario():
 
         except mysql.connector.Error as error:
             print("Error al borrar registro {}".format(error))
+
+        finally:
+            if connection.is_connected():
+                cursor.close()
+                connection.close()
+                print("Conexion cerrada")
+    
+    def actualizarUsuarioPorId(id, usuario):
+        try:
+            conectar()
+            mySql_insert_query = " UPDATE Usuarios SET  Apellido = " + usuario.Apellido + ", Nombre = " + usuario.Nombre + " , Email " + usuario.Email + ", Telefono " + usuario.Telefono + ", IdCliente " + usuario.IdCliente + ", IdEmprendedor " + usuario.IdEmprendedor + " WHERE Id=" + id           
+            cursor = connection.cursor()
+            cursor.execute(mySql_insert_query)
+            connection.commit()
+            print(cursor.rowcount, "registro(s) actualizado") 
+
+        except mysql.connector.Error as error:
+            print("Error al actualizar {}".format(error))
 
         finally:
             if connection.is_connected():
