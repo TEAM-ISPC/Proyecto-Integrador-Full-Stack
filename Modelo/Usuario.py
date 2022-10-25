@@ -46,10 +46,10 @@ class Usuario():
                 connection.close()
                 print("Conexion cerrada")
 
-    def obtenerUsuarioPorId(Id):
+    def obtenerUsuarioPorId(id):
         try:
             conectar()
-            mySql_query = "select * from productos where idUsuario =" + id
+            mySql_query = "select * from Usuarios where idUsuario =" + id
             cursor = connection.cursor()
             cursor.execute(mySql_query)       
             rows=cursor.fetchall()
@@ -62,6 +62,24 @@ class Usuario():
 
         finally:
             if connection.is_connected():
+                connection.close()
+                print("Conexion cerrada")
+
+    def borrarUsuarioPorId(id):
+        try:
+            conectar()
+            mySql = " DELETE FROM productos  WHERE Id =" + id
+            cursor = connection.cursor()
+            cursor.execute(mySql)
+            connection.commit()
+            print(cursor.rowcount, "registro(s) borrado") 
+
+        except mysql.connector.Error as error:
+            print("Error al borrar registro {}".format(error))
+
+        finally:
+            if connection.is_connected():
+                cursor.close()
                 connection.close()
                 print("Conexion cerrada")
 
