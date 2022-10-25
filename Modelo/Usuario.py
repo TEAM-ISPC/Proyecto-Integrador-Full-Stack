@@ -27,3 +27,25 @@ class Usuario():
     def __str__(self):
        return str(self.IdUsuario) + ' ' + self.Apellido + ' ' + self.Nombre + ' ' + self.Email + ' ' + self.Telefono + ' ' + str(self.IdCliente) + ' ' + str(self.IdEmprendedor)
 
+    def guardarUsuario(usuario):
+        try:
+            connection = mysql.connector.connect(host='localhost',
+                                                database='turnow',
+                                                user='root',
+                                                password='')
+
+            mySql_insert_query = "INSERT INTO Usuarios (IdUsuario, Apellido, Nombre, Email, Telefono, IdCliente, IdEmprendedor) VALUES (0, " + usuario.Apellido + ", " + usuario.Nombre + ", " + usuario.Email + ", " + usuario.Telefono + ", 0, 0)"
+
+            cursor = connection.cursor()
+            cursor.execute(mySql_insert_query)
+            connection.commit()
+            print(cursor.rowcount, "Se grabó usuario.")
+            cursor.close()
+
+        except mysql.connector.Error as error:
+            print("Error al grabar usuario {}".format(error))
+
+        finally:
+            if connection.is_connected():
+                connection.close()
+                print("Conexion cerrada")
