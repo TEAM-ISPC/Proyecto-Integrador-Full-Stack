@@ -13,6 +13,8 @@ Contará con los siguiente atributos:
 Definiríamos constructor, métodos getters(@property), setters(@xxx.setter) y toSting (__str__).
 
 """
+import mysql.connector
+
 class Usuario():
 
     def __init__(self, IdUsuario, Apellido, Nombre, Email, Telefono, IdCliente, IdEmprendedor):
