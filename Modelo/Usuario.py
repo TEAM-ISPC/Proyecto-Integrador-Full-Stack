@@ -19,16 +19,60 @@ listaUsuarios= []
 class Usuario():
     
     def __init__(self, IdUsuario, Apellido, Nombre, Email, Telefono, IdCliente, IdEmprendedor):
-        self.IdUsuario = IdUsuario
-        self.Apellido = Apellido
-        self.Nombre = Nombre
-        self.Email = Email
-        self.Telefono = Telefono
-        self.IdCliente = IdCliente
+        self._IdUsuario = IdUsuario
+        self._Apellido = Apellido
+        self._Nombre = Nombre
+        self._Email = Email
+        self._Telefono = Telefono
+        self._IdCliente = IdCliente
         self.IdEmprendedor = IdEmprendedor
 
     def __str__(self):
        return str(self.IdUsuario) + ' ' + self.Apellido + ' ' + self.Nombre + ' ' + self.Email + ' ' + self.Telefono + ' ' + str(self.IdCliente) + ' ' + str(self.IdEmprendedor)
+
+    # Getters y Setters
+
+    @property            
+    def IdUsuario(self): 
+        return self._IdUsuario
+    @IdUsuario.setter    
+    def IdUsuario(self, value):   
+        self._IdUsuario = value
+
+    @property            
+    def Apellido(self): 
+        return self._Apellido
+    @Apellido.setter    
+    def Apellido(self, value):   
+        self._Apellido = value 
+
+    @property            
+    def Nombre(self): 
+        return self._Nombre
+    @Nombre.setter    
+    def Nombre(self, value):   
+        self._Nombre = value 
+    
+    @property            
+    def Email(self): 
+        return self._Email
+    @Email.setter    
+    def Email(self, value):   
+        self._Email = value 
+
+    @property            
+    def Telefono(self): 
+        return self._Telefono
+    @Telefono.setter    
+    def Telefono(self, value):   
+        self._Telefono = value 
+
+    @property            
+    def IdCliente(self): 
+        return self._IdCliente
+    @IdCliente.setter    
+    def IdCliente(self, value):   
+        self._IdCliente = value 
 
     def guardarUsuario(self, usuario):
         listaUsuarios.append(usuario)
