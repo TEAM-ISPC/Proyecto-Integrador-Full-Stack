@@ -13,10 +13,11 @@ Contará con los siguiente atributos:
 Definiríamos constructor, métodos getters(@property), setters(@xxx.setter) y toSting (__str__).
 
 """
-import mysql.connector
 
+#listaUsuarios = [{"id":0,"apellido":"luna", "nombre":"emanuel", "email":"memonluna@gmail.com", "telefono":"12344213", "emprendedorId":0,"clienteId":0}]
+listaUsuarios= []
 class Usuario():
-
+    
     def __init__(self, IdUsuario, Apellido, Nombre, Email, Telefono, IdCliente, IdEmprendedor):
         self.IdUsuario = IdUsuario
         self.Apellido = Apellido
@@ -29,43 +30,17 @@ class Usuario():
     def __str__(self):
        return str(self.IdUsuario) + ' ' + self.Apellido + ' ' + self.Nombre + ' ' + self.Email + ' ' + self.Telefono + ' ' + str(self.IdCliente) + ' ' + str(self.IdEmprendedor)
 
-    def guardarUsuario(usuario):
-        try:
-            conectar()
-            mySql_insert_query = "INSERT INTO Usuarios (IdUsuario, Apellido, Nombre, Email, Telefono, IdCliente, IdEmprendedor) VALUES (0, " + usuario.Apellido + ", " + usuario.Nombre + ", " + usuario.Email + ", " + usuario.Telefono + ", 0, 0)"
+    def guardarUsuario(self, usuario):
+        listaUsuarios.append(usuario)
 
-            cursor = connection.cursor()
-            cursor.execute(mySql_insert_query)
-            connection.commit()
-            print(cursor.rowcount, "Se grabó usuario.")
-            cursor.close()
+    def obtenerUsuarios(self):
+        for x in range(len(listaUsuarios)):
+            print(listaUsuarios[x])
+        return listaUsuarios
 
-        except mysql.connector.Error as error:
-            print("Error al grabar usuario {}".format(error))
+    def obtenerUsuarioPorId(self, id):
 
-        finally:
-            if connection.is_connected():
-                connection.close()
-                print("Conexion cerrada")
-
-    def obtenerUsuarioPorId(id):
-        try:
-            conectar()
-            mySql_query = "select * from Usuarios where idUsuario =" + id
-            cursor = connection.cursor()
-            cursor.execute(mySql_query)       
-            rows=cursor.fetchall()
-            for row in rows:
-                print(row)     
-            cursor.close()
-
-        except mysql.connector.Error as error:
-            print("Error al obtener usuario {}".format(error))
-
-        finally:
-            if connection.is_connected():
-                connection.close()
-                print("Conexion cerrada")
+        return filter(lambda x: x[0] == id, listaUsuarios)
 
     def borrarUsuarioPorId(id):
         try:
@@ -103,8 +78,12 @@ class Usuario():
                 connection.close()
                 print("Conexion cerrada")
 
-    def conectar():
-        connection = mysql.connector.connect(host='localhost',
-                                            database='Turnow',
-                                            user='root',
-                                            password='')
+                
+
+
+usuario1 = Usuario(0, "luna", "emanuel", "memonluna@gmail.com", "12344213", 0,0)
+usuario1.guardarUsuario(usuario1)
+usuario2 = Usuario(1, "lunasss", "emanuel", "memonluna@gmail.com", "12344213", 0,0)
+usuario2.guardarUsuario(usuario2)
+usuario1.obtenerUsuarios()
+usuario1.obtenerUsuarioPorId(1)
