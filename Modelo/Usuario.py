@@ -82,10 +82,10 @@ class Usuario():
         return UsuarioLista
 
 
-usuario1 = Usuario(0, "luna", "emanuel", "memonlunagmail.com", "1234", "12344213")
+# usuario1 = Usuario(0, "luna", "emanuel", "memonlunagmail.com", "1234", "12344213")
 # usuario1.guardarUsuario(usuario1)
 # usuario1.obtenerUsuarioPorId(2)
 # usuario1.borrarUsuarioPorId(2)
 # usuario2 = Usuario(0, "lunatico", "emanuel", "memonlunagmail.com", "1234", "12344213")
 # usuario1.actualizarUsuarioPorId(1, usuario2)
-usuario1.obtenerListaUsuarios()
+# usuario1.obtenerListaUsuarios()
