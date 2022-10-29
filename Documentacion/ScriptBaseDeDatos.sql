@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS Emprendedores(
         tiempoTurno INT,
         descripcion Varchar(500),
         idCategoriasTrabajo INT,
+        direccion Varchar(150),
         redSocial1 Varchar(50),
         redSocial Varchar(50),
 		usuarioId INT,

@@ -1,4 +1,5 @@
 from sqlService import sqlService
+
 class Usuario():    
 
     def __init__(self, IdUsuario, Apellido, Nombre, Email, Password, Telefono):
