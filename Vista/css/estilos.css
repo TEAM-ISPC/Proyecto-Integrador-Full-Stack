@@ -51,4 +51,8 @@
     margin: 5px;
 }
 
+/* estilos turnero */
 
+#turnos td {
+    padding: 0%;
+}
