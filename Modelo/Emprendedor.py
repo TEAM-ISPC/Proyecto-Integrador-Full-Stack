@@ -101,3 +101,5 @@ class Emprendedor(Usuario):
     @UsuarioId.setter    
     def UsuarioId(self, value):   
         self._UsuarioId = value    
+
+        # se agrega toString
