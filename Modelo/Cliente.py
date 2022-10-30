@@ -83,5 +83,5 @@ cliente1 = Cliente(usuario1.IdUsuario, usuario1.Apellido, usuario1.Nombre, usuar
 # cliente1.borrarClientePorId(8)
 # cliente1 = Usuario(0, "lunatico", "emanuel", "memonlunagmail.com", "1234", "12344213")
 # cliente1.actualizarClientePorId(10, cliente1)
-print(cliente1.obtenerListaClientes())
+# cliente1.obtenerListaClientes()
 # print(cliente1.Direccion)

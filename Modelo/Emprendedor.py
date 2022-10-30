@@ -38,3 +38,17 @@ class Emprendedor(Usuario):
         self._RedSocial2 = RedSocial2
         self._UsuarioId = UsuarioId
 
+    @property            
+    def IdEmprendedor(self): 
+        return self._IdEmprendedor
+    @IdEmprendedor.setter    
+    def IdEmprendedor(self, value):   
+        self._IdEmprendedor = value
+
+    @property            
+    def DiasTrabajar(self): 
+        return self._DiasTrabajar
+    @DiasTrabajar.setter    
+    def DiasTrabajar(self, value):   
+        self._DiasTrabajar = value
+    
