@@ -34,19 +34,18 @@ let turno = {
 };
 
 let turno2 = {
-    idTurnos: 1,
-    fecha: "29-10-2022",
-    horaTurno: "19:00",
-    clienteId: 1,
-    trabajo: "Tatuaje",
-    emprendedorId: 1,
-    comentario: "jaja",
-  };
+  idTurnos: 1,
+  fecha: "29-10-2022",
+  horaTurno: "19:00",
+  clienteId: 1,
+  trabajo: "Tatuaje",
+  emprendedorId: 1,
+  comentario: "jaja",
+};
 
-  let ListaTurnosOcu = [];
-  ListaTurnosOcu.push(turno);
-  ListaTurnosOcu.push(turno2);
-  
+let ListaTurnosOcu = [];
+ListaTurnosOcu.push(turno);
+ListaTurnosOcu.push(turno2);
 
 //Hilo
 
@@ -54,7 +53,7 @@ let turno2 = {
 setSemanas();
 
 function generarTabla2(principio, fin) {
-    var tblBody = document.createElement("tbody");
+  var tblBody = document.createElement("tbody");
   //Generar Lista
   principio = moment(principio, "DD-MM-YYYY").format("YYYY-MM-DD H:mm");
   fin = moment(fin, "DD-MM-YYYY").add(1, "days").format("YYYY-MM-DD H:mm");
@@ -75,10 +74,9 @@ function generarTabla2(principio, fin) {
     return (element = moment(element, "YYYY-MM-DD H:mm").format("H:mm"));
   });
 
-
   //empezamos a armar la estructura de la tabla
   let x = 0;
-  let temp = 24 / emprendimiento.tiempoTurno
+  let temp = 24 / emprendimiento.tiempoTurno;
   // Crea las celdas
   for (var i = 0; i < temp; i++) {
     // Crea las hileras de la tabla
@@ -135,59 +133,69 @@ function setSemanas() {
   cargarTurnos(ListaTurnosOcu);
 }
 
-function bloquerTurnos(){
-    cuerpoTabla = document.getElementById("tableBody");
+function bloquerTurnos() {
+  cuerpoTabla = document.getElementById("tableBody");
+  if (cuerpoTabla.hasChildNodes()) {
+    var children = cuerpoTabla.childNodes;
+    for (var i = 0; i < children.length; i++) {
+      if (children[i].hasChildNodes()) {
+        var children2 = children[i].childNodes;
+        for (var j = 0; j < children2.length; j++) {
+          //SI id es menor a la hora de inicio y mayor a la hora de cerrar, pintar gris
+          hora = moment(children2[j].id, "YYYY-MM-DD H:mm").format("H:mm");
+          if (
+            moment(hora, "H:mm").isSameOrAfter(
+              moment(emprendimiento.horarioDiaNormalFinal, "H:mm")
+            ) ||
+            moment(hora, "H:mm").isSameOrBefore(
+              moment(emprendimiento.horarioDiaNormalInicio, "H:mm")
+            )
+          ) {
+            let celda = document.getElementById(children2[j].id);
+            celda.style.backgroundColor = "grey";
+            celda.innerHTML = "No disponible";
+          }
+          //si es domingo no se trabaja
+          if (moment(children2[j].id, "YYYY-MM-DD H:mm").day() == 0) {
+            let celda = document.getElementById(children2[j].id);
+            celda.style.backgroundColor = "grey";
+            celda.innerHTML = "No disponible";
+          }
+        }
+      }
+    }
+  }
+}
+
+function cargarTurnos(ListaTurnosOcu) {
+  cuerpoTabla = document.getElementById("tableBody");
+  console.log(ListaTurnosOcu);
+  for (let index = 0; index < ListaTurnosOcu.length; index++) {
+    let armarFecha =
+      ListaTurnosOcu[index].fecha + " " + ListaTurnosOcu[index].horaTurno;
+    let turnoArmado = moment(armarFecha, "DD-MM-YYYY H:mm").format(
+      "YYYY-MM-DD H:mm"
+    );
+    console.log(turnoArmado);
+
     if (cuerpoTabla.hasChildNodes()) {
-        var children = cuerpoTabla.childNodes; 
-        for (var i = 0; i < children.length; i++) {
-          if (children[i].hasChildNodes()) {
-            var children2 = children[i].childNodes; 
-            for (var j = 0; j < children2.length; j++) {
-                //SI id es menor a la hora de inicio y mayor a la hora de cerrar, pintar gris
-                hora = moment(children2[j].id, "YYYY-MM-DD H:mm").format("H:mm");
-                if (moment(hora, "H:mm").isSameOrAfter(moment(emprendimiento.horarioDiaNormalFinal, "H:mm"))
-                || moment(hora, "H:mm").isSameOrBefore(moment(emprendimiento.horarioDiaNormalInicio, "H:mm"))) {
-                    let celda = document.getElementById(children2[j].id);                     
-                    celda.style.backgroundColor = "grey";
-                    celda.innerHTML = "No disponible";
-                }
-                //si es domingo no se trabaja
-                if (moment(children2[j].id, "YYYY-MM-DD H:mm").day() == 0) {
-                    let celda = document.getElementById(children2[j].id);                     
-                    celda.style.backgroundColor = "grey";
-                    celda.innerHTML = "No disponible";
-                }
+      var children = cuerpoTabla.childNodes;
+      for (var i = 0; i < children.length; i++) {
+        if (children[i].hasChildNodes()) {
+          var children2 = children[i].childNodes;
+          for (var j = 0; j < children2.length; j++) {
+            if (
+              moment(children2[j].id, "DD-MM-YYYY H:mm").isSame(
+                moment(turnoArmado, "DD-MM-YYYY H:mm")
+              )
+            ) {
+              let celda = document.getElementById(children2[j].id);
+              celda.style.backgroundColor = "grey";
+              celda.innerHTML = ListaTurnosOcu[index].clienteId;
             }
           }
         }
       }
-}
-
-function cargarTurnos(ListaTurnosOcu){
-    cuerpoTabla = document.getElementById("tableBody");
-    console.log(ListaTurnosOcu)
-    for (let index = 0; index < ListaTurnosOcu.length; index++) {
-        let armarFecha = ListaTurnosOcu[index].fecha + " " + ListaTurnosOcu[index].horaTurno;
-        let turnoArmado = moment(armarFecha, "DD-MM-YYYY H:mm").format("YYYY-MM-DD H:mm");
-        console.log(turnoArmado);
-
-        if (cuerpoTabla.hasChildNodes()) {
-            var children = cuerpoTabla.childNodes; 
-            for (var i = 0; i < children.length; i++) {
-              if (children[i].hasChildNodes()) {
-                var children2 = children[i].childNodes; 
-                for (var j = 0; j < children2.length; j++) {
-                    if (moment(children2[j].id,"DD-MM-YYYY H:mm").isSame(moment(turnoArmado, "DD-MM-YYYY H:mm"))) {
-                        let celda = document.getElementById(children2[j].id);                     
-                        celda.style.backgroundColor = "grey";
-                        celda.innerHTML = ListaTurnosOcu[index].clienteId;
-                    }
-                }
-              }
-            }
-          }
-
-
     }
+  }
 }
-

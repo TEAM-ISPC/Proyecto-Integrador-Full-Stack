@@ -77,7 +77,7 @@ class Cliente(Usuario):
 
 
 usuario1 = Usuario(1, "luna", "emanuel", "memonlunagmail.com", "1234", "12344213")
-cliente1 = Cliente(usuario1.IdUsuario, usuario1.Apellido, usuario1.Nombre, usuario1.Email, usuario1.Password, usuario1.Telefono, 0, "san m 12556456", 2, 123, usuario1.IdUsuario)
+cliente1 = Cliente(usuario1.IdUsuario, usuario1.Apellido, usuario1.Nombre, usuario1.Email, usuario1.Password, usuario1.Telefono, 0, "san m 126456", 2, 123, usuario1.IdUsuario)
 # cliente1.guardarCliente(cliente1)
 # cliente1.obtenerClientePorId(8)
 # cliente1.borrarClientePorId(8)
