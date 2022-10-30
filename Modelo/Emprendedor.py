@@ -21,7 +21,7 @@ class Emprendedor(Usuario):
     @property            
     def IdEmprendedor(self): 
         return self._IdEmprendedor
-    @IdEmprendedor.setter    
+    @IdEmprendedor.setter
     def IdEmprendedor(self, value):   
         self._IdEmprendedor = value
 
@@ -29,7 +29,7 @@ class Emprendedor(Usuario):
     def DiasTrabajar(self): 
         return self._DiasTrabajar
     @DiasTrabajar.setter    
-    def DiasTrabajar(self, value):   
+    def DiasTrabajar(self, value):
         self._DiasTrabajar = value
     
     @property            
