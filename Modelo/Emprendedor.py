@@ -32,3 +32,10 @@ class Emprendedor(Usuario):
     def DiasTrabajar(self, value):   
         self._DiasTrabajar = value
     
+    @property            
+    def HorarioDiaNormalInicio(self): 
+        return self._HorarioDiaNormalInicio
+    @HorarioDiaNormalInicio.setter    
+    def HorarioDiaNormalInicio(self, value):   
+        self._HorarioDiaNormalInicio = value
+        
