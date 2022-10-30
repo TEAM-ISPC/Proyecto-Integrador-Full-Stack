@@ -59,3 +59,5 @@ class turnos():
     @Comentario.setter    
     def Comentario(self, value):   
         self._Comentario = value   
+
+        # aca agregar toString
