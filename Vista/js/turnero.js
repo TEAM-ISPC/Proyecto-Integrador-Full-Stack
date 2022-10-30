@@ -86,7 +86,7 @@ function generarTabla2(principio, fin) {
       if (j == 0) {
         var textoCelda = document.createTextNode(horasFormateadas[i]);
       } else {
-        var textoCelda = document.createTextNode(ListaTurnos[x]);
+        var textoCelda = document.createTextNode("");
         celda.setAttribute("id", ListaTurnos[x]);
         x = x + temp;
       }
@@ -190,7 +190,7 @@ function cargarTurnos(ListaTurnosOcu) {
               )
             ) {
               let celda = document.getElementById(children2[j].id);
-              celda.style.backgroundColor = "grey";
+              celda.style.backgroundColor = "lightgreen";
               celda.innerHTML = ListaTurnosOcu[index].clienteId;
             }
           }
