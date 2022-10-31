@@ -1,4 +1,3 @@
-from Usuario import *
 from sqlService import sqlService
 
 class Emprendedor(Usuario):    
