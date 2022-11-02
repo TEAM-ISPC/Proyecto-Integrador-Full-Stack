@@ -3,7 +3,7 @@ import mysql.connector
 class sqlService:
     def ejecutarSqlCUD(self, SqlQuery, msjExito, msjError):
         try:
-            connection = mysql.connector.connect(host='localhost', port = 3308, database='turnow', user='root', password='')
+            connection = mysql.connector.connect(host='localhost', port = 3306, database='turnow', user='root', password='')
             print(SqlQuery)
             cursor = connection.cursor(buffered=True)
             cursor.execute(SqlQuery)
