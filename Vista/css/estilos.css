@@ -59,10 +59,10 @@
 
 /*----Detalles formularios (no toca distribución de campos)----*/
 
-.form-control:focus{
+.formulario__input:focus{
     border: 3px solid #ee525a;
     outline: none;
-    box-shadow: 3px 0px 10px #73E1C3;
+    box-shadow: 3px 0px 10px rgb(238, 82, 90, .2);
 }
 
 .formulario__input-error{
@@ -112,8 +112,8 @@
     opacity: 1;
 }
 
-.formulario__grupo-incorrecto .formulario__iput{
-    border: 3px  #cc1b1b;
+.formulario__grupo-incorrecto .formulario__input{
+   background: rgba(255, 0, 0, 0.1);
 }
 
 /*-----termina la parte de validación-----*/
