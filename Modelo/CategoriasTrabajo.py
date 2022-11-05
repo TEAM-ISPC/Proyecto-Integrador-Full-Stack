@@ -33,7 +33,7 @@ class CategoriasTrabajo():
         sqlService.ejecutarSqlCUD(self, Query, "Se grabó categoria.", "Error al grabar categoria {}")
 
     def obtenerCategoriaPorId(self, id):           
-        Query = "select * from categoriastrabajo where idCategoria =" + str(id)
+        Query = "select * from categoriastrabajo WHERE idCategoria =" + str(id)
         Categoria = sqlService.ejecutarSqlR1(self, Query, "Error al obtener la categoria {}")
         print(Categoria)
         return Categoria
@@ -44,11 +44,11 @@ class CategoriasTrabajo():
 
     def actualizarCategoriaPorId(self, id, categoria):
         Query = "UPDATE categoriastrabajo SET Tipo ='" + categoria.Tipo + "', Descripcion ='" + categoria.Descripcion + "' WHERE idCategoria = " + str(id)
-        sqlService.ejecutarSqlCUD(self, Query, "Se actualizó usuario.", "Error al borrar usuario {}")
+        sqlService.ejecutarSqlCUD(self, Query, "Se actualizó la categoria correctamente.", "Error al borrar la categoria {}")
 
-    def obtenerListaClientes(self):
-        Query = "select * from clientes"
-        ClienteLista = sqlService.ejecutarSqlRAll(self, Query, "Error al obtener cliente {}")
+    def obtenerListaCategoria(self):
+        Query = "SELECT * FROM categoriastrabajo"
+        ClienteLista = sqlService.ejecutarSqlRAll(self, Query, "Error al obtener categoria {}")
         print(ClienteLista)
         return ClienteLista
 
@@ -57,7 +57,7 @@ categoria1 = CategoriasTrabajo(0, "peluqueria", "descripcion de categoria")
 categoria1.guardarCategoria(categoria1)
 # categoria1.obtenerCategoriaPorId(4)
 # categoria1.borrarCategoriaPorId(2)
-categoria2 = CategoriasTrabajo(0, "barberia", "descripcion de categoria actualizada")
-categoria1.actualizarCategoriaPorId(8, categoria2)
-# cliente1.obtenerListaClientes()
-# print(cliente1.Direccion)
+# categoria2 = CategoriasTrabajo(0, "barberia", "descripcion de categoria actualizada")
+# categoria1.actualizarCategoriaPorId(8, categoria2)
+# categoria1.obtenerListaCategoria()
+# print(categoria1.Tipo)
