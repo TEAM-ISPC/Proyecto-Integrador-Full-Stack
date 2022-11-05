@@ -42,8 +42,8 @@ class CategoriasTrabajo():
         Query = "DELETE FROM categoriastrabajo WHERE IdCategoria=" + str(id)
         sqlService.ejecutarSqlCUD(self, Query, "Se borró la categoria.", "Error al borrar la categoria {}")
 
-    def actualizarClientePorId(self, id, cliente):
-        Query = "UPDATE clientes SET direccion='" + cliente.Direccion + "', calificacion='" + str(cliente.Calificacion) + "' , puntosAcumulados='" + str(cliente.PuntosAcumulados) + "', usuarioId='" + str(cliente.UsuarioId) + "' WHERE idCliente = " + str(id)
+    def actualizarCategoriaPorId(self, id, categoria):
+        Query = "UPDATE categoriastrabajo SET Tipo ='" + categoria.Tipo + "', Descripcion ='" + categoria.Descripcion + "' WHERE idCategoria = " + str(id)
         sqlService.ejecutarSqlCUD(self, Query, "Se actualizó usuario.", "Error al borrar usuario {}")
 
     def obtenerListaClientes(self):
@@ -53,11 +53,11 @@ class CategoriasTrabajo():
         return ClienteLista
 
 
-categoria1 = CategoriasTrabajo(0, "zapatero", "descripcion")
+categoria1 = CategoriasTrabajo(0, "peluqueria", "descripcion de categoria")
 categoria1.guardarCategoria(categoria1)
 # categoria1.obtenerCategoriaPorId(4)
 # categoria1.borrarCategoriaPorId(2)
-# cliente1 = Usuario(0, "lunatico", "emanuel", "memonlunagmail.com", "1234", "12344213")
-# cliente1.actualizarClientePorId(10, cliente1)
+categoria2 = CategoriasTrabajo(0, "barberia", "descripcion de categoria actualizada")
+categoria1.actualizarCategoriaPorId(8, categoria2)
 # cliente1.obtenerListaClientes()
 # print(cliente1.Direccion)
