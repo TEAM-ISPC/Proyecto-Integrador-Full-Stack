@@ -7,4 +7,9 @@ INSERT INTO usuarios (idUsuario, apellido, nombre, email, password, telefono) VA
 SELECT * FROM usuarios;
 SELECT idUsuario, nombre FROM usuarios;
 SELECT * FROM usuarios where nombre = 'yohana';
+INSERT INTO Clientes (idCliente, direccion, calificacion, puntosAcumulados) VALUES (0,'igualdad 5886', 10 , 330);
+INSERT INTO Clientes (idCliente, direccion, calificacion, puntosAcumulados) VALUES (0,'colon 1290', 3 , 120);
+INSERT INTO Clientes (idCliente, direccion, calificacion, puntosAcumulados) VALUES (0,'marcelo t alvear 493', 1 , 20);
+INSERT INTO Clientes (idCliente, direccion, calificacion, puntosAcumulados) VALUES (0,'calazan 1233', 34 , 12330);
+SELECT * FROM Clientes
 -- Continuar aqui
