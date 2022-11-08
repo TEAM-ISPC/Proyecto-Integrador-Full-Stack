@@ -4,7 +4,7 @@ from sqlService import sqlService
 
 class Emprendedor(Usuario, CategoriasTrabajo):    
 
-    def __init__(self, IdUsuario, Apellido, Nombre, Email, Password, Telefono, IdEmprendedor, DiasTrabajar, HorarioDiaNormalInicio, HorarioDiaNormalFinal, HorarioDiaEspecialInicio, HorarioDiaEspecialFinal, TiempoTurno, Descripcion, CategoriaTrabajoID, RedSocial1, RedSocial2, UsuarioId):
+    def __init__(self, IdUsuario, Apellido, Nombre, Email, Password, Telefono, IdEmprendedor, DiasTrabajar, HorarioDiaNormalInicio, HorarioDiaNormalFinal, HorarioDiaEspecialInicio, HorarioDiaEspecialFinal, TiempoTurno, Descripcion, idCategoriasTrabajo, Direccion, RedSocial1, RedSocial2, UsuarioId):
         super().__init__(IdUsuario, Apellido, Nombre, Email, Password, Telefono)
         self._IdEmprendedor = IdEmprendedor
         self._DiasTrabajar = DiasTrabajar
@@ -14,7 +14,8 @@ class Emprendedor(Usuario, CategoriasTrabajo):
         self._HorarioDiaEspecialFinal = HorarioDiaEspecialFinal
         self._TiempoTurno = TiempoTurno
         self._Descripcion = Descripcion
-        self._CategoriaTrabajoID = CategoriaTrabajoID
+        self._idCategoriasTrabajo = idCategoriasTrabajo
+        self._Direccion = Direccion
         self._RedSocial1 = RedSocial1
         self._RedSocial2 = RedSocial2
         self._UsuarioId = UsuarioId                 
@@ -76,11 +77,18 @@ class Emprendedor(Usuario, CategoriasTrabajo):
         self._Descripcion = value        
 
     @property            
-    def CategoriaTrabajoID(self): 
-        return self._CategoriaTrabajoID
-    @CategoriaTrabajoID.setter    
-    def CategoriaTrabajoID(self, value):   
-        self._CategoriaTrabajoID = value     
+    def idCategoriasTrabajo(self): 
+        return self._idCategoriasTrabajo
+    @idCategoriasTrabajo.setter    
+    def idCategoriasTrabajo(self, value):   
+        self._idCategoriasTrabajo = value   
+          
+    @property            
+    def Direccion(self): 
+        return self._Direccion
+    @Direccion.setter    
+    def Direccion(self, value):   
+        self._Direccion = value     
 
     @property            
     def RedSocial1(self): 
@@ -104,21 +112,21 @@ class Emprendedor(Usuario, CategoriasTrabajo):
         self._UsuarioId = value    
 
     def guardarEmprendedor(self, emprendedor):
-        Query = "INSERT INTO emprendedores (idEmprendedor, DiasTrabajar, HorarioDiaNormalInicio, HorarioDiaNormalFinal, HorarioDiaEspecialInicio, HorarioDiaEspecialFinal, TiempoTurno, Descripcion, CategoriaTrabajoID, RedSocial1, RedSocial2, UsuarioId) VALUES (0, '"+ str(emprendedor.DiasTrabajar) + "', '"+ str(emprendedor.HorarioDiaNormalInicio) + "', '"+ str(emprendedor.HorarioDiaNormalFinal) + "', '"+ str(emprendedor.HorarioDiaEspecialInicio) + "', '"+ str(emprendedor.HorarioDiaEspecialFinal) + "', '"+ str(emprendedor.TiempoTurno) + "', '"+ emprendedor.Descripcion + "', '"+ str(emprendedor.CategoriaTrabajoID) + "', '"+ emprendedor.RedSocial1 + "', '"+ emprendedor.RedSocial2 + "', '"+ str(emprendedor.UsuarioId) + "' );"
+        Query = "INSERT INTO emprendedores (idEmprendedor, DiasTrabajar, HorarioDiaNormalInicio, HorarioDiaNormalFinal, HorarioDiaEspecialInicio, HorarioDiaEspecialFinal, TiempoTurno, Descripcion, idCategoriasTrabajo, Direccion, RedSocial1, RedSocial2, UsuarioId) VALUES (0, '"+ str(emprendedor.DiasTrabajar) + "', '"+ str(emprendedor.HorarioDiaNormalInicio) + "', '"+ str(emprendedor.HorarioDiaNormalFinal) + "', '"+ str(emprendedor.HorarioDiaEspecialInicio) + "', '"+ str(emprendedor.HorarioDiaEspecialFinal) + "', '"+ str(emprendedor.TiempoTurno) + "', '"+ emprendedor.Descripcion + "', '"+ str(emprendedor.idCategoriasTrabajo) + "', '"+ emprendedor.Direccion + "', '"+ emprendedor.RedSocial1 + "', '"+ emprendedor.RedSocial2 + "', '"+ str(emprendedor.UsuarioId) + "' );"
         sqlService.ejecutarSqlCUD(self, Query, "Se grabó Emprendedor.", "Error al grabar Emprendedor {}")
         
     def obtenerEmprendedorPorId(self, id):           
-        Query = "SELECT * from emprendedores WHERE idEmprendedor =" + str(id)
+        Query = "SELECT * FROM emprendedores WHERE idEmprendedor =" + str(id)
         Cliente = sqlService.ejecutarSqlR1(self, Query, "Error al obtener emprendedor {}")
         print(Cliente)
         return Cliente
 
 
 usuario1 = Usuario(1, "Rios", "Agustin", "agustin@correo.com", "1234", "12344213")
-categoria1 = CategoriasTrabajo(0, "peluqueria", "descripcion de categoria")
-emprendedor1 = Emprendedor(usuario1.IdUsuario, usuario1.Apellido, usuario1.Nombre, usuario1.Email, usuario1.Password, usuario1.Telefono, 0, 5, 8, 16, 8, 12, 1, "descripcion", categoria1.IdCategorias , "Facebook.com/", "instagram.com/", usuario1.IdUsuario)
+categoria1 = CategoriasTrabajo(1, "peluqueria", "descripcion de categoria")
+emprendedor1 = Emprendedor(usuario1.IdUsuario, usuario1.Apellido, usuario1.Nombre, usuario1.Email, usuario1.Password, usuario1.Telefono, 0, 5, "08:00:00", "16:00:00", "8:00:00", "12:00:00", 1, "descripcion del turno", categoria1.IdCategorias , "centro 456", "Facebook.com/peluqueria", "instagram.com/peluqueria", usuario1.IdUsuario)
 emprendedor1.guardarEmprendedor(emprendedor1)
-emprendedor1.obtenerEmprendedorPorId(5)
+# emprendedor1.obtenerEmprendedorPorId(9)
 # cliente1.borrarClientePorId(8)
 # cliente1 = Usuario(0, "lunatico", "emanuel", "memonlunagmail.com", "1234", "12344213")
 # cliente1.actualizarClientePorId(10, cliente1)
