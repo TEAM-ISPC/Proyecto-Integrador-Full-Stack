@@ -120,14 +120,18 @@ class Emprendedor(Usuario, CategoriasTrabajo):
         Cliente = sqlService.ejecutarSqlR1(self, Query, "Error al obtener emprendedor {}")
         print(Cliente)
         return Cliente
+    
+    def borrarEmprendedorPorId(self, id):
+        Query = "DELETE FROM emprendedores WHERE idEmprendedor =" + str(id)
+        sqlService.ejecutarSqlCUD(self, Query, "Se borró emprendedor.", "Error al borrar emprendedor {}")
 
 
 usuario1 = Usuario(1, "Rios", "Agustin", "agustin@correo.com", "1234", "12344213")
 categoria1 = CategoriasTrabajo(1, "peluqueria", "descripcion de categoria")
 emprendedor1 = Emprendedor(usuario1.IdUsuario, usuario1.Apellido, usuario1.Nombre, usuario1.Email, usuario1.Password, usuario1.Telefono, 0, 5, "08:00:00", "16:00:00", "8:00:00", "12:00:00", 1, "descripcion del turno", categoria1.IdCategorias , "centro 456", "Facebook.com/peluqueria", "instagram.com/peluqueria", usuario1.IdUsuario)
-emprendedor1.guardarEmprendedor(emprendedor1)
+# emprendedor1.guardarEmprendedor(emprendedor1)
 # emprendedor1.obtenerEmprendedorPorId(9)
-# cliente1.borrarClientePorId(8)
+emprendedor1.borrarEmprendedorPorId(9)
 # cliente1 = Usuario(0, "lunatico", "emanuel", "memonlunagmail.com", "1234", "12344213")
 # cliente1.actualizarClientePorId(10, cliente1)
 # cliente1.obtenerListaClientes()
