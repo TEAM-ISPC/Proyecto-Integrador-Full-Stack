@@ -112,7 +112,7 @@ class Emprendedor(Usuario, CategoriasTrabajo):
         self._UsuarioId = value    
 
     def guardarEmprendedor(self, emprendedor):
-        Query = "INSERT INTO emprendedores (idEmprendedor, DiasTrabajar, HorarioDiaNormalInicio, HorarioDiaNormalFinal, HorarioDiaEspecialInicio, HorarioDiaEspecialFinal, TiempoTurno, Descripcion, idCategoriasTrabajo, Direccion, RedSocial1, RedSocial2, UsuarioId) VALUES (0, '"+ str(emprendedor.DiasTrabajar) + "', '"+ emprendedor.HorarioDiaNormalInicio + "', '"+ emprendedor.HorarioDiaNormalFinal + "', '"+ emprendedor.HorarioDiaEspecialInicio + "', '"+ emprendedor.HorarioDiaEspecialFinal + "', '"+ str(emprendedor.TiempoTurno) + "', '"+ emprendedor.Descripcion + "', '"+ str(emprendedor.idCategoriasTrabajo) + "', '"+ emprendedor.Direccion + "', '"+ emprendedor.RedSocial1 + "', '"+ emprendedor.RedSocial2 + "', '"+ str(emprendedor.UsuarioId) + "' );"
+        Query = "INSERT INTO emprendedores (idEmprendedor, DiasTrabajar, HorarioDiaNormalInicio, HorarioDiaNormalFinal, HorarioDiaEspecialInicio, HorarioDiaEspecialFinal, TiempoTurno, Descripcion, idCategoriasTrabajo, Direccion, RedSocial1, RedSocial2, UsuarioId) VALUES (0, '"+ emprendedor.DiasTrabajar + "', '"+ emprendedor.HorarioDiaNormalInicio + "', '"+ emprendedor.HorarioDiaNormalFinal + "', '"+ emprendedor.HorarioDiaEspecialInicio + "', '"+ emprendedor.HorarioDiaEspecialFinal + "', '"+ str(emprendedor.TiempoTurno) + "', '"+ emprendedor.Descripcion + "', '"+ str(emprendedor.idCategoriasTrabajo) + "', '"+ emprendedor.Direccion + "', '"+ emprendedor.RedSocial1 + "', '"+ emprendedor.RedSocial2 + "', '"+ str(emprendedor.UsuarioId) + "' );"
         sqlService.ejecutarSqlCUD(self, Query, "Se grabó Emprendedor.", "Error al grabar Emprendedor {}")
         
     def obtenerEmprendedorPorId(self, id):           
@@ -126,7 +126,8 @@ class Emprendedor(Usuario, CategoriasTrabajo):
         sqlService.ejecutarSqlCUD(self, Query, "Se borró emprendedor.", "Error al borrar emprendedor {}")
         
     def actualizarEmprendedorPorId(self, id, emprendedor):
-        Query = "UPDATE emprendedores SET DiasTrabajar='" + emprendedor.DiasTrabajar + "', HorarioDiaNormalInicio='" + emprendedor.HorarioDiaNormalInicio + "', HorarioDiaNormalFinal='" + emprendedor.HorarioDiaNormalFinal + "', HorarioDiaEspecialInicio='" + emprendedor.HorarioDiaEspecialInicio + "', HorarioDiaEspecialFinal='" + emprendedor.HorarioDiaEspecialFinal + "', TiempoTurno='" + str(emprendedor.TiempoTurno) + "', Descripcion='" + emprendedor.Descripcion + "', idCategoriasTrabajo='" + str(emprendedor.TiempoTurno) + "', Direccion='" + emprendedor.Direccion + "', RedSocial1='" + emprendedor.RedSocial1 + "', RedSocial2='" + emprendedor.RedSocial2 + "', UsuarioId='" + str(emprendedor.UsuarioId) + "' WHERE idEmprendedor = " + str(id)
+        Query = "UPDATE emprendedores SET DiasTrabajar='" + emprendedor.DiasTrabajar + "', HorarioDiaNormalInicio='" + emprendedor.HorarioDiaNormalInicio + "', HorarioDiaNormalFinal='" + emprendedor.HorarioDiaNormalFinal + "', HorarioDiaEspecialInicio='" + emprendedor.HorarioDiaEspecialInicio + "', HorarioDiaEspecialFinal='" + emprendedor.HorarioDiaEspecialFinal + "', TiempoTurno=" + str(emprendedor.TiempoTurno) + ", Descripcion='" + emprendedor.Descripcion + "', idCategoriasTrabajo=" + str(emprendedor.TiempoTurno) + ", Direccion='" + emprendedor.Direccion + "', RedSocial1='" + emprendedor.RedSocial1 + "', RedSocial2='" + emprendedor.RedSocial2 + "', UsuarioId=" + str(emprendedor.UsuarioId) + " WHERE idEmprendedor = " + str(id) + ";"
+        print(Query)
         sqlService.ejecutarSqlCUD(self, Query, "Se actualizó emprendedor.", "Error al borrar emprendedor {}")
         
     def obtenerListaEmprendedores(self):
@@ -138,13 +139,13 @@ class Emprendedor(Usuario, CategoriasTrabajo):
 
 usuario1 = Usuario(1, "Rios", "Agustin", "agustin@correo.com", "1234", "12344213")
 categoria1 = CategoriasTrabajo(1, "peluqueria", "descripcion de categoria")
-emprendedor1 = Emprendedor(usuario1.IdUsuario, usuario1.Apellido, usuario1.Nombre, usuario1.Email, usuario1.Password, usuario1.Telefono, 0, 5, "08:00:00", "16:00:00", "8:00:00", "12:00:00", 1, "descripcion del turno", categoria1.IdCategorias , "centro 456", "Facebook.com/peluqueria", "instagram.com/peluqueria", usuario1.IdUsuario)
-emprendedor1.guardarEmprendedor(emprendedor1)
+emprendedor1 = Emprendedor(usuario1.IdUsuario, usuario1.Apellido, usuario1.Nombre, usuario1.Email, usuario1.Password, usuario1.Telefono, 0, "5", "08:00:00", "16:00:00", "8:00:00", "12:00:00", 1, "descripcion del turno", categoria1.IdCategorias , "centro 456", "Facebook.com/peluqueria", "instagram.com/peluqueria", usuario1.IdUsuario)
+# emprendedor1.guardarEmprendedor(emprendedor1)
 # emprendedor1.obtenerEmprendedorPorId(9)
 # emprendedor1.borrarEmprendedorPorId(9)
-# emprendedor1 = Usuario(0, "lunatico", "emanuel", "memonlunagmail.com", "1234", "12344213")
-# emprendedor1 = Emprendedor(usuario1.IdUsuario, usuario1.Apellido, usuario1.Nombre, usuario1.Email, usuario1.Password, usuario1.Telefono, 0, 5, "08:00:00", "16:00:00", "8:00:00", "12:00:00", 1, "descripcion del turno", categoria1.IdCategorias , "centro 456", "Facebook.com/peluqueria", "instagram.com/peluqueria", usuario1.IdUsuario)
-# emprendedor1.actualizarEmprendedorPorId(15, emprendedor1)
-emprendedor1.obtenerListaEmprendedores()
-print(emprendedor1.Direccion)
+emprendedor1 = Usuario(1, "Rios", "Agustin", "agustin@correo.com", "1234", "12344213")
+emprendedor1 = Emprendedor(usuario1.IdUsuario, usuario1.Apellido, usuario1.Nombre, usuario1.Email, usuario1.Password, usuario1.Telefono, 0, "5", "08:30:00", "16:30:00", "8:00:00", "12:00:00", 1, "descripcion del turno", categoria1.IdCategorias , "centro 456", "Facebook.com/peluqueria", "instagram.com/peluqueria", usuario1.IdUsuario)
+emprendedor1.actualizarEmprendedorPorId(15, emprendedor1)
+# emprendedor1.obtenerListaEmprendedores()
+# print(emprendedor1.Direccion)
 
