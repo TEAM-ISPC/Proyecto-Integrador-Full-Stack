@@ -28,4 +28,8 @@ INSERT INTO Clientes (idCliente, direccion, calificacion, puntosAcumulados,usuar
 SELECT * 
 FROM clientes
 inner join usuarios on clientes.usuarioId=usuarios.idUsuario;
--- Continuar aqui
+-- Tabla emprendedores
+INSERT INTO emprendedores (idEmprendedor, nombreEmprendimiento, DiasTrabajar, HorarioDiaNormalInicio, HorarioDiaNormalFinal, HorarioDiaEspecialInicio, HorarioDiaEspecialFinal, TiempoTurno, Descripcion, idCategoriasTrabajo, Direccion, RedSocial1, RedSocial2, UsuarioId) VALUES (0, "Bruno Luna Tatoo", "5", "08:00:00", "16:00:00", "8:00:00", "12:00:00", 1, "descripcion del turno", 1 , "centro 456", "Facebook.com/peluqueria", "instagram.com/peluqueria", 1);
+-- Tabla turnos (Join de tres tablas para turnero)
+SELECT T.idTurnos, T.fecha, T.horaTurno, U.apellido AS apellidoCliente, U.nombre AS nombreCliente, T.trabajo, E.nombreEmprendimiento FROM Turnos AS T JOIN usuarios AS U ON T.clienteId = U.idUsuario JOIN emprendedores AS E ON T.emprendedorId = E.idEmprendedor;
+

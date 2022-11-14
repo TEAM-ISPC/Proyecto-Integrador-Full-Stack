@@ -54,7 +54,7 @@ class CategoriasTrabajo():
 
 
 categoria1 = CategoriasTrabajo(0, "peluqueria", "descripcion de categoria")
-categoria1.guardarCategoria(categoria1)
+# categoria1.guardarCategoria(categoria1)
 # categoria1.obtenerCategoriaPorId(4)
 # categoria1.borrarCategoriaPorId(2)
 # categoria2 = CategoriasTrabajo(0, "barberia", "descripcion de categoria actualizada")

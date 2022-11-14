@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS Clientes(
         );
 CREATE TABLE IF NOT EXISTS Emprendedores(
         idEmprendedor int(11) NOT NULL AUTO_INCREMENT,
+        nombreEmprendimiento varchar(100),
         diastrabajar varchar(50),
         horarioDiaNormalInicio Time,
         horarioDiaNormalFinal Time,
