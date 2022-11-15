@@ -13,3 +13,6 @@ SÁNCHEZ, Marina Victoria
 
 ### VIDEO PRESENTACIÓN DE PROYECTO INTEGRADOR:
 https://www.youtube.com/watch?v=d8aP9fcMcgM
+
+### LINK WORDPRESS:
+https://turnow.diegoarroyofv.com/ (usuario para profesores "admin" contraseña "1234")
