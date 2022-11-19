@@ -15,4 +15,4 @@ SÁNCHEZ, Marina Victoria
 https://www.youtube.com/watch?v=d8aP9fcMcgM
 
 ### LINK WORDPRESS:
-https://turnow.diegoarroyofv.com/ (usuario para profesores "admin" contraseña "1234")
+https://turnow.diegoarroyofv.com/ 
